@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a two column layout.
+ */
+#}
+
+{#
+/**
+ * The settings variable is provided by the layout plugin, contains all
+ * configuration options for the plugin including the ones added through our
+ * custom code.
+ *
+ * The following code uses the column_width configuration to alter the set of
+ * classes used in the template and thereby alters the display.
+ */
+#}
+
+{% set css_class = settings.css_class %}
+{% set container = settings.container %}
+{% set columns = settings.columns %}
+
+{% if content|render|trim %}
+  {% if css_class %}
+    <div class={{css_class}}>
+  {% endif %}  
+      <div{{ attributes.addClass('container'~ container) }}>
+        <div class="row">
+
+          <div {{ region_attributes.one_column.addClass(columns) }} {% if not region_attributes.left %} class={{ columns }} {% endif %}>
+            {% if content.one_column %}
+                {{ content.one_column }}
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+  {% if css_class %}
+    </div>
+  {% endif %}
+{% endif %}

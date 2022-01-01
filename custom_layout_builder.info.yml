@@ -1,0 +1,7 @@
+name: 'Custom Layout Builder'
+type: module
+description: 'Provides a way for building grid layouts'
+core_version_requirement: ^8 || ^9
+package: 'Custom'
+dependencies:
+  - layout_builder:layout_builder

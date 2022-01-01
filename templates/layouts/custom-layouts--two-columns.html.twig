@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a two column layout.
+ */
+#}
+
+{#
+/**
+ * The settings variable is provided by the layout plugin, contains all
+ * configuration options for the plugin including the ones added through our
+ * custom code.
+ *
+ * The following code uses the column_width configuration to alter the set of
+ * classes used in the template and thereby alters the display.
+ */
+#}
+
+{% set css_class = settings.css_class %}
+{% set container = settings.container %}
+{% set columns = settings.columns|split('|') %}
+
+{% if content|render|trim %}
+  {% if css_class %}
+    <div class={{css_class}}>
+  {% endif %}  
+  
+    <div{{ attributes.addClass('container'~ container) }}>
+      <div class="row">
+
+        <div {{ region_attributes.column_left.addClass(columns[0]) }} {% if not region_attributes.column_left %} class={{ columns[0] }} {% endif %}>
+          <div class="col-wrapper wrapper-left">
+            {% if content.column_left %}
+              {{ content.column_left }}
+            {% endif %}
+          </div>
+        </div>
+
+        <div {{ region_attributes.column_right.addClass(columns[1]) }} {% if not region_attributes.column_right %} class={{ columns[1] }} {% endif %}>
+          <div class="col-wrapper wrapper-right">
+            {% if content.column_right %}
+              {{ content.column_right }}
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {% if css_class is not empty %}
+    </div>
+  {% endif %}
+{% endif %}

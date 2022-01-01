@@ -1,0 +1,29 @@
+two_columns:
+  label: 'Custom Two Columns'
+  path: templates/layouts
+  class: '\Drupal\custom_layout_builder\Layout\CustomLayoutClass'
+  template: custom-layouts--two-columns
+  library: custom_layout_builder/global
+  category: 'Columns: 2'
+  default_region: content
+  icon_map:
+    - [left, right]
+  regions:
+    column_left:
+      label: Left
+    column_right:
+      label: Right
+
+one_column:
+  label: 'Custom One Column'
+  path: templates/layouts
+  class: '\Drupal\custom_layout_builder\Layout\CustomLayoutClass'
+  template: custom-layouts--one-column
+  library: custom_layout_builder/global
+  category: 'Columns: 1'
+  default_region: content
+  icon_map:
+    - [content]
+  regions:
+    one_column:
+      label: One Column
